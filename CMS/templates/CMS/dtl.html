@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTL</title>
+</head>
+<body bgcolor=grey>
+    <h1>**Example of DTL(Django Template Language)**</h1>
+    {% for hello in numbers %}
+    <h1>Welcome to python {{hello}}</h1>
+    {% endfor %}
+    <div>
+        <h1 align="center">**We have following employee details**</h1>
+        <table border="3" align="center" bgcolor="pink" width="42%">
+            <tr>
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Address</th>
+            </tr>
+            {%for emp in employees %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{emp.name}}</td>
+                <td>{{emp.age}}</td>
+                <td>{{emp.address}}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td align="center" colspan="4">
+                    <h1>No found details!!</h1>
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </table>
+    </div>
+</body>
+</html>

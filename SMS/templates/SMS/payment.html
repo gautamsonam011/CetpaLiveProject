@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COURSE DETAILS</title>
+</head>
+<body bgcolor="pink">
+    <form method="post">
+        {%csrf_token%}
+    <h1 align="center">**STUDENT WISE COURESE DETAILS**</h1>
+    Select Courses:
+    <select name="courses">
+       {% for course in courses %}
+       <option value="{{course.id}}">{{course.name}}</option>
+    </select>
+    {%endfor%}
+    <button> Get Student Details</button>
+
+    <h2> We Have Following Student Of </h2>
+
+    <br/><br/>
+    <div>
+        <table border="3">
+            <tr>
+                <th> S.No</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Payment_mode</th>
+                <th>Payment_Date</th>
+            </tr>
+            <tr>
+            {%for pay in payment%}
+            <td>{{forloop.counter}}</td>
+            <td>{{stu.name}}</td>
+            <td>{{pay.amount}}</td>
+            <td>{{pay.payment_mode}}</td>
+            <td>{{pay.payment_date}}</td>
+            </tr>
+            {%empty%}
+            <h2 style="color:blue";>No Found Details!!</h2>
+            {%endfor%}
+        </table>
+    </div>
+
+    </form>
+</body>
+</html>
